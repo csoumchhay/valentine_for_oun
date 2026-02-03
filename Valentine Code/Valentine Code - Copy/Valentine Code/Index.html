@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story | Feb 14</title>
+    <link rel="stylesheet" href="Valentine.css">
+    <link rel="icon" type="image/x-icon" href="Icon.PNG">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="heart-bg"></div>
+
+    <a href="Time-Line.html" class="floating-link" title="Another Secret">
+        📅
+    </a>
+
+    <nav class="navbar">
+        <div class="logo">Valentine❤️</div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-list">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+            <li><a href="#quotes" onclick="closeMenu()">Quotes</a></li>
+            <li><a href="#gift" class="nav-cta" onclick="closeMenu()">Special Gift</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-overlay">
+            <h1 class="animate-pop">Happy February 14th</h1>
+            <p>To the one who holds the key to my heart.</p>
+            <div class="scroll-indicator">↓ Scroll to explore ↓</div>
+        </div>
+    </header>
+
+    <section id="gallery" class="section">
+        <h2 class="section-title">A Million Memories</h2>
+        <p class="section-subtitle">Put your finger on the picture that you want to see</p>
+        <div class="gallery-grid">
+            <div class="pic-card">
+                <img src="Pic1.JPG" alt="Memory 1">
+                <div class="overlay"><span>Our First Date</span></div>
+            </div>
+            <div class="pic-card">
+                <img src="Pic2.JPG" alt="Memory 2">
+                <div class="overlay"><span>The Best Trip</span></div>
+            </div>
+            <div class="pic-card">
+                <img src="Pic3.JPG" alt="Memory 3">
+                <div class="overlay"><span>Laughing Together</span></div>
+            </div>
+            <div class="pic-card">
+                <img src="Pic4.JPG" alt="Memory 4">
+                <div class="overlay"><span>Sweetest Smile</span></div>
+            </div>
+            <div class="pic-card">
+                <img src="Pic5.JPG" alt="Memory 5">
+                <div class="overlay"><span>Late Night Talks</span></div>
+            </div>
+            <div class="pic-card">
+                <img src="Pic6.JPEG" alt="Memory 6">
+                <div class="overlay"><span>Forever Yours</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quotes" class="section quote-section">
+    <div class="quote-glass-card">
+        <div class="quote-decoration top">❤</div>
+        <h2 class="section-title white">Whispers of My Heart</h2>
+        <div class="quote-text-wrapper">
+            <p id="quote-display">"Tap the button to reveal a secret..."</p>
+        </div>
+        <button class="btn-love" onclick="generateQuote()">
+            <span class="btn-text">Generate Love ✨</span>
+            <div class="btn-glow"></div>
+        </button>
+        <div class="quote-decoration bottom">❤</div>
+    </div>
+   </section>
+
+    <section id="gift" class="section">
+        <div class="gift-container" id="heart-container">
+            <h2 class="section-title">The Final Surprise</h2>
+            <div class="gift-wrapper">
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-lid"></div>
+                    <div class="gift-body">
+                        <div class="ribbon-v"></div>
+                        <div class="ribbon-h"></div>
+                    </div>
+                    <div class="gift-content">
+                        <div class="polaroid">
+                            <img src="suprise-pic.JPG" alt="Us">
+                            <p>Forever & Always ❤️</p>
+                        </div>
+                        <h3 style="color: rgb(255, 255, 255);">I Love You!</h3>
+                    </div>
+                </div>
+            </div>
+            <p class="tap-hint">Tap the box to unlock my heart...</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Created from heart for Ing Ing &copy; 2026</p>
+    </footer>
+
+    <script>
+        // MOBILE MENU LOGIC
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            // Animate hamburger to X
+            menuToggle.classList.toggle('is-active');
+        });
+
+        function closeMenu() {
+            navList.classList.remove('active');
+        }
+
+        // Quote Generator
+        const loveQuotes = [
+            "You are my favorite notification.",
+            "I love you more than pizza (and that's a lot).",
+            "Every love story is beautiful, but ours is my favorite.",
+            "You’re the 'the' in my 'the one'.",
+            "I'm much more 'me' when I'm with you.",
+            "My favorite place in the world is next to you."
+        ];
+
+        function generateQuote() {
+            const display = document.getElementById('quote-display');
+            display.style.opacity = 0;
+            setTimeout(() => {
+                const random = Math.floor(Math.random() * loveQuotes.length);
+                display.innerText = `"${loveQuotes[random]}"`;
+                display.style.opacity = 1;
+            }, 300);
+        }
+
+        // Advanced Gift Opener
+        function openGift(element) {
+            if(!element.classList.contains('opened')) {
+                element.classList.add('opened');
+                createHearts();
+            }
+        }
+
+        function createHearts() {
+            const container = document.getElementById('heart-container');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart-pop';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.position = 'absolute';
+                heart.style.bottom = '20%';
+                heart.style.fontSize = '2rem';
+                heart.style.animation = 'floatUp 3s forwards';
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>

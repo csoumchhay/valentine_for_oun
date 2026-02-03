@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Timeless Love Story</title>
+    <link rel="stylesheet" href="Time-Line.css">
+    <link rel="icon" type="image/x-icon" href="Icon.PNG">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <audio id="buttonClickSound" src="cute-sound.mp3" preload="auto"></audio>
+</head>
+<body>
+    <a href="Flower.html" class="floating-link" title="Another Secret">
+        💝
+    </a>
+
+    <div class="background-orb orb-1"></div>
+    <div class="background-orb orb-2"></div>
+    <div class="background-orb orb-3"></div>
+
+    <nav class="nav-wrapper">
+        <div class="button-group">
+            <a href="#first-meet" class="nav-button" onclick="playClickSound()">First Meet</a>
+            <a href="#relationship" class="nav-button" onclick="playClickSound()">Our Start</a>
+            <a href="#forever" class="nav-button" onclick="playClickSound()">Our End</a>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <span class="intro-text">A Love Story for the Ages</span>
+            <h1>Our Timeless Journey Together</h1>
+            <p class="summary-text">Every moment with you is a cherished chapter, beautifully written in the book of our hearts.</p>
+            <div class="days-together-badge">
+                <span class="icon">💖</span> <span id="days-count">0</span> Days
+            </div>
+        </div>
+    </header>
+
+    <main class="timeline-body">
+
+        <section id="first-meet" class="milestone-section fade-in-up">
+            <div class="glass-card">
+                <div class="chapter-indicator">Chapter I</div>
+                <h2 class="milestone-title">First Meet</h2>
+                <div class="date-display">
+                    <span class="icon">📅</span> 05 April 2025
+                </div>
+                
+                <div class="photo-frame-group">
+                    <div class="main-photo-frame">
+                        <img src="FM1.JPG" alt="Our First Encounter">
+                        <div class="photo-caption">The day our worlds truly met.</div>
+                    </div>
+                    <div class="detail-photo-frame">
+                        <img src="FM2.JPG" alt="First Memory Detail">
+                    </div>
+                </div>
+
+                <div class="story-detail-box">
+                    <p>
+                        They say destiny unfolds in unexpected moments, and for us, that moment was April 5th, 2025. It wasn't just a meeting; it was the precise moment the universe decided our paths should intertwine forever.
+                    </p>
+                    <button class="read-more-button" onclick="showStory('The air crackled with unspoken possibilities, and your smile became my new favorite sight.')">Read More Moments</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="relationship" class="milestone-section fade-in-up">
+            <div class="glass-card">
+                <div class="chapter-indicator">Chapter II</div>
+                <h2 class="milestone-title">Our Start</h2>
+                <div class="date-display">
+                    <span class="icon">💞</span> 20 July 2025
+                </div>
+                
+                <div class="photo-frame-group reverse">
+                    <div class="main-photo-frame">
+                        <img src="SR2.JPG" alt="Beginning of Our Journey">
+                        <div class="photo-caption">Our journey officially began.</div>
+                    </div>
+                    <div class="detail-photo-frame">
+                        <img src="SR1.JPG" alt="Relationship Memory Detail">
+                    </div>
+                </div>
+
+                <div class="story-detail-box">
+                    <p>
+                        July 20th, 2025 – the day &quot;you and I&quot; transformed into &quot;us.&quot; This was more than just starting a relationship; it was a sacred promise to build a future together.
+                    </p>
+                    <button class="read-more-button" onclick="showStory('Every challenge became an opportunity to grow stronger, every joy a shared celebration.')">Discover Our Journey</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="forever" class="milestone-section fade-in-up">
+            <div class="glass-card">
+                <div class="chapter-indicator">The Final Chapter</div>
+                <h2 class="milestone-title">Our End</h2>
+                <div class="date-display">
+                    <span class="icon">♾️</span> Until The End Of Time
+                </div>
+                
+                <div class="photo-frame-group">
+                    <div class="main-photo-frame">
+                        <img src="ER1.JPG" alt="Our Future Forever">
+                        <div class="photo-caption">A love that knows no end.</div>
+                    </div>
+                    <div class="detail-photo-frame">
+                        <img src="ER2.JPG" alt="Forever Detail">
+                    </div>
+                </div>
+
+                <div class="story-box">
+                    <p>
+                        To speak of an &quot;end&quot; to our relationship feels impossible. It is a <b style="color: palevioletred;">LOVE</b> that only our last breath can fulfill.
+                    </p>
+                    <button class="read-more-button" onclick="showStory('With every passing moment, my love for you only deepens, like an endless ocean.')">Pledge Eternal Love</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="storyModal" class="custom-modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal" onclick="closeStory()">&times;</span>
+            <div class="modal-heart">❤️</div>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <footer class="love-footer">
+        <div class="footer-decoration"></div>
+        <p>Handcrafted with infinite love for Ing Ing</p>
+        <span class="signature">Forever</span>
+    </footer>
+
+    <script>
+        // 1. Calculate Days Together
+        const startDate = new Date("2025-07-20T00:00:00");
+        const today = new Date();
+        const diffInTime = today.getTime() - startDate.getTime();
+        const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
+        document.getElementById('days-count').innerText = diffInDays;
+
+        // 2. Custom Modal Logic
+        const modal = document.getElementById('storyModal');
+        const modalText = document.getElementById('modal-text');
+
+        function showStory(message) {
+            playClickSound();
+            modalText.innerText = message;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Stop scroll
+        }
+
+        function closeStory() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scroll
+        }
+
+        // Close when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeStory();
+            }
+        }
+
+        // 3. Audio Controller
+        function playClickSound() {
+            const sound = document.getElementById('buttonClickSound');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(e => console.log("Audio play blocked by browser"));
+            }
+        }
+    </script>
+</body>
+</html>

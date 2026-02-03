@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midnight Bloom | For Ing Ing</title>
+    <link rel="stylesheet" href="Flower.css">
+    <link rel="icon" type="image/x-icon" href="Icon.PNG">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <div class="heart-icon">❤️</div>
+            <h2 class="dancing-font">A Special Gift for You</h2>
+            <button id="startBtn" class="premium-btn">Open your gift</button>
+        </div>
+    </div>
+        <a href="Index.html" class="floating-link" title="Another Secret">
+        🏠
+    </a>
+
+    <audio id="mySong" loop>
+        <source src="Perfect.mp3" type="audio/mpeg">
+    </audio>
+    <p style="color: gold; justify-self: center; font-size: 30px; font-family: fantasy; " >"Perfect"</p>
+    <hr style="color: gold;">
+    <div class="midnight-stage">
+        <div class="lyrics-container">
+            <p id="lyric-text">"Baby, I'm..."</p>
+        </div>
+
+        <div class="flower-wrap">
+            <div class="stem" id="stem">
+                <div class="leaf l-1"></div>
+                <div class="leaf l-2"></div>
+            </div>
+            
+            <div class="rose-head">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="petal p6"></div>
+                <div class="rose-glow"></div>
+            </div>
+        </div>
+    </div>
+
+   <div class="gallery-section">
+    <div class="gallery-track">
+        <div class="img-frame"><img src="pic1.jpg"></div>
+        <div class="img-frame"><img src="pre-wedding.JPG"></div>
+        <div class="img-frame"><img src="pic3.jpg"></div>
+        <div class="img-frame"><img src="pic4.jpg"></div>
+        <div class="img-frame"><img src="pic5.jpg"></div> 
+        <div class="img-frame"><img src="pic1.jpg"></div>
+        <div class="img-frame"><img src="pre-wedding.JPG"></div>
+        <div class="img-frame"><img src="pic3.jpg"></div>
+        <div class="img-frame"><img src="pic4.jpg"></div>
+        <div class="img-frame"><img src="pic5.jpg"></div>
+    </div>
+</div>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const song = document.getElementById('mySong');
+        const lyricDisplay = document.getElementById('lyric-text');
+
+        const lyrics = [
+            "dancing in the dark...",
+            "With you between my arms...",
+            "Barefoot on the grass...",
+            "Listening to our favorite song...",
+            "I have faith in what I see...",
+            "Now I know I have met an angel...",
+            "in person And she look...",
+            "Perfect I don't...",
+            "Deserve this...",
+            "You look perfect tonight...",
+            "...",
+            "...",
+            "...",
+            "...",
+            "Baby, I'm...",
+        ];
+
+        startBtn.addEventListener('click', () => {
+            song.play();
+            document.getElementById('overlay').classList.add('fade-out');
+            
+            // Trigger Stem Growth
+            document.getElementById('stem').classList.add('grow');
+            
+            // Bloom petals one by one
+            document.querySelectorAll('.petal').forEach((p, i) => {
+                setTimeout(() => p.classList.add('bloom'), 1200 + (i * 400));
+            });
+
+            // Cycle lyrics
+            let currentLyric = 0;
+            setInterval(() => {
+                lyricDisplay.style.opacity = 0;
+                setTimeout(() => {
+                    lyricDisplay.innerText = lyrics[currentLyric];
+                    lyricDisplay.style.opacity = 1;
+                    currentLyric = (currentLyric + 1) % lyrics.length;
+                }, 1000);
+            }, 3700);
+        });
+
+        // Floating sparkles
+        function createSparkle() {
+            const s = document.createElement('div');
+            s.className = 'sparkle';
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 2000);
+        }
+        setInterval(createSparkle, 150);
+    </script>
+</body>
+</html>
